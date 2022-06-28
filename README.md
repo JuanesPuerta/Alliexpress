@@ -1,60 +1,66 @@
 # Alliexpress
 
 
-Appium
-NPM version Node.js CI Monthly Downloads FOSSA Status StandWithUkraine
+Appium Desktop is an app for Mac, Windows, and Linux which gives you the power of the Appium automation server in a beautiful and flexible UI. It is basically a graphical interface for the Appium Server. You can set options, start/stop the server, see logs, etc... You also don't need to use Node/NPM to install Appium, as the Node runtime comes bundled with Appium Desktop.
 
-Stand With Ukraine
+Note: an inspector UI used to be included with Appium Desktop. It is now its own separate app: Appium Inspector.
 
-Appium is an open-source, cross-platform test automation tool for native, hybrid, and mobile web and desktop apps. We support simulators (iOS), emulators (Android), and real devices (iOS, Android, Windows, Mac).
+Download Appium Desktop
+You can always pick up the latest release of the Server GUI at our Release page on GitHub.
 
-Want to skip straight to the action? Check out our getting started doc.
+If you're on Windows or macOS, Appium Desktop will automatically provide you with updated versions of the app when they are released. If you encounter a problem updating, simply delete or uninstall the app and re-download the latest from the link above.
 
-Supported Platforms
-Appium supports app automation across a variety of platforms, like iOS, Android, and Windows. Each platform is supported by one or more "drivers", which know how to automate that particular platform.
+Note that Appium Desktop is not the same thing as Appium. Appium Desktop is a graphical frontend to Appium with additional tools. Appium Desktop is released on its own cadence and has its own versioning system. If you are reporting an issue with Appium Desktop, always be sure to include both the version of Appium Desktop and the version of the Appium Server which is in use (see below).
 
-Please refer to Appium Platform Support for more details.
+If you're on macOS, you will need to install Appium Desktop apps by copying the app from the downloaded DMG file to your own file system (the best place is the "Applications" folder). Running Appium from in side the attached DMG itself is not supported, and will not work.
 
-Why Appium?
-You don't have to recompile your app or modify it in any way, due to the use of standard automation APIs on all platforms.
-You can write tests with your favorite dev tools using any WebDriver-compatible language such as Java, Objective-C, JavaScript (Node), PHP, Python, Ruby, C#, Clojure, or Perl with the Selenium WebDriver API and language-specific client libraries.
-You can use any testing framework.
-Appium has built-in mobile web and hybrid app support. Within the same script, you can switch seamlessly between native app automation and webview automation, all using the WebDriver model that's already the standard for web automation.
-Investing in the WebDriver protocol means you are betting on a single, free, and open protocol for testing that has become a web standard. Don't lock yourself into a proprietary stack.
+Installing on macOS
+If you're using the desktop app on macOS, when you run it you will likely be greeted with some error about the app not being able to be opened, or not verified by Apple, or something similar. The easiest way to get around this is to run xattr -cr on the file you downloaded. So let's say you downloaded Appium-Server-GUI-mac-<version>.dmg and copy Appium Server GUI.app in /Applications inside the disk image. Then you would run xattr -cr "/Applications/Appium Server GUI.app" before opening it. The same goes for the zip version (or the .app itself).
 
-For example, if you use Apple's XCUITest library without Appium you can only write tests using Obj-C/Swift, and you can only run tests through Xcode. Similarly, with Google's UiAutomator or Espresso, you can only write tests in Java/Kotlin. Appium opens up the possibility of true cross-platform native app automation, for mobile and beyond. Finally!
+The reason for this is that the Appium team does not have a paid Apple developer account and so our app isn't signed by a certificate they recognize, so the OS attempts to prevent it from running. Running the command above gets around this security limitation.
 
-If you're new to Appium or want a more comprehensive description of what this is all about, please read our Introduction to Appium Concepts.
+Please try to call codesign --deep --sign - /Applications/Appium\ Server\ GUI.app in case you gets a crash in the app starts. <= should be resplved since v1.22.3-4
 
-Requirements
-Your environment needs to be set up for the particular platforms that you want to run tests on. Each of the drivers above documents the requirements for their particular brand of automation. At a minimum, you will need to be able to run Node.js 12+.
+Known Issues
+Some Windows 10 Users experience a PathTooLongException when installing the EXE. The workaround for this is to update the setting on Windows to enable long paths
+Usage Instructions
+These instructions assume you are already familiar with Appium and Appium-related concepts. If you are new to Appium, please visit appium.io and read our introductory material. They also assume that you have downloaded both the Server GUI and the Inspector apps.
 
-Get Started
-Check out our Getting Started guide to get going with Appium.
+This app provides a convenient way to download and run the Appium automation server, as well as a tool for inspecting elements in Chrome/Safari browser and your Android or iOS application. Its various capabilities are described in the following sections.
 
-There is also a sample code that contains many examples of tests in a variety of different languages!
+Starting a simple server
+Start a basic server
 
-Documentation
-For prettily-rendered docs, please visit appium.io. You can always find the full list of Appium doc pages at Appium's GitHub Repo as well.
+When you open Appium Desktop, you are greeted with the server start window. The basic option is to start an Appium server with all its defaults and the ability to modify the host and port. The start button will also let you know which version of the Appium server you are running, which can be useful when reporting issues to the Appium team.
 
-update-appium-io.yml creates a PR by CI job. in the appium.io repository with the documentation update.
+Starting a server with advanced options
+Start an advanced server
 
-Once the PR has been merged, the latest documentation will be in appium.io
+By clicking on the 'Advanced' tab, you have the ability to set all the server flags that are available in Appium. This is for advanced users and should only be modified after consulting the Appium documentation.
 
-Contributing
-Please take a look at our contribution documentation for instructions on how to build, test, and run Appium from the source.
+Server presets
+Server presets
 
-Roadmap
-Interested in where Appium is heading in the future? Check out the Roadmap
+If you use the advanced server options, you have the ability to save a configuration for later use. Simply save the preset on the 'Advanced' tab, and you will subsequently be able to recall and start the server with that configuration from the 'Preset' tab.
 
-Project History, Credits & Inspiration
-History
-Credits
-User Forums
-Announcements and debates often take place on the Discussion Group, be sure to sign up!
+The server console output window
+Once you start the server, it will launch on the host and port you specified, and open a new window displaying the server log output.
 
-Troubleshooting
-We put together a troubleshooting guide. Please have a look here first if you run into any problems. It contains instructions for checking a lot of common errors and how to get in touch with the community if you're stumped.
+Server console
 
-License
-FOSSA Status
+This is fairly straightforward and no real interaction is possible, beyond using the button to stop the server. You can also copy-and-paste the logs from this window which is useful in reporting Appium issues.
+
+Reporting Issues and Requesting Features
+Appium Desktop is open source, and we use GitHub for issue tracking. Please simply report issues at our issue tracker. We will endeavor to determine whether the issue you are reporting is related to Appium Desktop or Appium Server. If it's not related to Appium Desktop specifically, we will close the issue and ask you to open a general Appium issue at Appium's main issue tracker. Please, save yourselves and us valuable time by getting clear on whether the issue you're experiencing is related to Appium Desktop specifically or instead is a general Appium issue. You can do this by seeing whether the issue reproduces with the Appium command line server as well. If it does, direct your report to Appium's issue tracker.
+
+Have a feature request? Follow the same process and submit an issue to the appropriate tracker! (Either here in this repo if the request is specifically for Appium Desktop, or Appium's main tracker if the request is for Appium more generally.)
+
+Advanced Topics and Troubleshooting
+Appium can't detect environment variables on Mac
+Appium uses environment variables like ANDROID_HOME as well as relying on various binaries in your PATH and so on. When running from the command line in an environment where you have set these variables appropriately, Appium has no problem in picking them up. However, Appium Desktop does not run in a shell or a command-line environment, and so by default it does not have access to environment variables you have set in your shell startup script or profile. To work around this, we use the shell-env package to pick up environment variables defined in your shell. This package only looks in certain common init scripts, however, like ~/.bashrc, ~/.bash_profile, and ~/.zshrc. If you set your Appium environment variables in some other way, you will need to create one of these default init scripts and set your environment variables there as well, so that Appium Desktop will successfully pick them up.
+
+Warnings about being on a read-only file system
+This probably means you tried to launch Appium Desktop from the downloaded disk image (.dmg file). This is not a supported mode of running Appium Desktop. To correctly install Appium Desktop, copy the application from the disk image to your local filesystem, to somewhere like /Applications. Then, run the app from that new location.
+
+Developer Instructions
+Want to hack on Appium Desktop? Awesome! Head on over to our Contributing Doc for information on how to get a dev environment set up and submit changes back to the project.
